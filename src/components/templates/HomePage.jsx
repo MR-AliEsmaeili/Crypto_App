@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getCoinList } from "../../services/CryptoApi";
 import TableCoin from "../modules/TableCoin";
+import { RotatingTriangles } from "react-loader-spinner";
 const HomePage = () => {
   const [coin, setCoin] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,19 @@ const HomePage = () => {
 
   return (
     <div>
-      <TableCoin coin={coin} />
+      {loading ? (
+        <RotatingTriangles
+          visible={true}
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="rotating-triangles-loading"
+          wrapperStyle={{ margin: "40vh auto" }}
+          wrapperClass=""
+        />
+      ) : (
+        <TableCoin coin={coin} />
+      )}
     </div>
   );
 };
