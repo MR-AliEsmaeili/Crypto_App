@@ -56,7 +56,7 @@ const toPersianDigits = (number) => {
 };
 const TableCoin = ({ coin }) => {
   return (
-    <div className="overflow-x-auto rounded-xl shadow-lg">
+    <div className="overflow-x-auto rounded-xl shadow-lg my-10">
       <table className="w-full bg-stone-800 rounded-xl text-center text-sm table-auto">
         <thead>
           <tr className="bg-slate-900 text-gray-200">
