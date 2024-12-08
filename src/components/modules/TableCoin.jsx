@@ -49,7 +49,11 @@
 // export default TableCoin;
 import ChartUp from "../../assets/chart-up.svg";
 import ChartDown from "../../assets/chart-down.svg";
-
+const toPersianDigits = (number) => {
+  return number
+    .toString()
+    .replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[digit]);
+};
 const TableCoin = ({ coin }) => {
   return (
     <div className="overflow-x-auto rounded-xl shadow-lg">
@@ -82,7 +86,7 @@ const TableCoin = ({ coin }) => {
                 </div>
               </td>
               <td dir="ltr" className="py-3 px-4 font-bold">
-                {data.current_price.toLocaleString()}$
+                {toPersianDigits(data.current_price.toLocaleString())}$
               </td>
               <td
                 dir="ltr"
@@ -92,10 +96,10 @@ const TableCoin = ({ coin }) => {
                     : "text-red-500"
                 }`}
               >
-                {data.price_change_percentage_24h.toFixed(2)}%
+                {toPersianDigits(data.price_change_percentage_24h.toFixed(2))}%
               </td>
               <td dir="ltr" className="py-3 px-4 font-bold">
-                {data.total_volume.toLocaleString()}
+                {toPersianDigits(data.total_volume.toLocaleString())}
               </td>
               <td className="py-3 px-4 flex items-center justify-center">
                 <img
