@@ -69,7 +69,7 @@ const TableCoin = ({ coin }) => {
               key={data.id}
               className={`${
                 index % 2 === 0 ? "bg-stone-700" : "bg-stone-800"
-              } hover:bg-stone-600 text-gray-300`}
+              } hover:bg-stone-600 text-gray-300 cursor-pointer`}
             >
               <td className="py-3 px-4">
                 <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
@@ -78,15 +78,15 @@ const TableCoin = ({ coin }) => {
                     alt={data.name}
                     className="w-6 h-6 rounded-full"
                   />
-                  <p className="font-medium">{data.symbol.toUpperCase()}</p>
+                  <p className="font-bold">{data.symbol.toUpperCase()}</p>
                 </div>
               </td>
-              <td dir="ltr" className="py-3 px-4 font-mono">
+              <td dir="ltr" className="py-3 px-4 font-bold">
                 {data.current_price.toLocaleString()}$
               </td>
               <td
                 dir="ltr"
-                className={`py-3 px-4 font-medium ${
+                className={`py-3 px-4 font-bold ${
                   data.price_change_percentage_24h > 0
                     ? "text-green-500"
                     : "text-red-500"
@@ -94,14 +94,14 @@ const TableCoin = ({ coin }) => {
               >
                 {data.price_change_percentage_24h.toFixed(2)}%
               </td>
-              <td dir="ltr" className="py-3 px-4 font-mono">
+              <td dir="ltr" className="py-3 px-4 font-bold">
                 {data.total_volume.toLocaleString()}
               </td>
               <td className="py-3 px-4 flex items-center justify-center">
                 <img
                   src={data.price_change_percentage_24h > 0 ? ChartUp : ChartDown}
                   alt={data.symbol}
-                  className="w-6 h-6"
+                  className="w-10 h-6"
                 />
               </td>
             </tr>
