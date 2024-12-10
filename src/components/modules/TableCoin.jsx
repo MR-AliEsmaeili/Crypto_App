@@ -1,58 +1,7 @@
-// import ChartUp from "../../assets/chart-up.svg";
-// import ChartDown from "../../assets/chart-down.svg";
-
-// const TableCoin = ({ coin }) => {
-//   return (
-//     <table className=" w-full bg-stone-700 rounded-xl table-auto	text-center">
-//       <thead >
-//         <tr>
-//           <td  className="bg-slate-800 py-2">ارز دیجیتال</td>
-//           <td  className="bg-slate-800 py-2">قیمت فعلی</td>
-//           <td  className="bg-slate-800 py-2">تغییرات 📈</td>
-//           <td  className="bg-slate-800 py-2">حجم معاملات </td>
-//           <td  className="bg-slate-800 py-2">نمودار</td>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         {coin.map((data) => (
-//           <tr key={data.id}>
-//             <td>
-//               <div className="flex ">
-//                 <img src={data.image} alt={data.name} className="w-5 h-5" />
-//                 <p>{data.symbol.toUpperCase()}</p>
-//               </div>
-//             </td>
-//             <td dir="ltr">{data.current_price}$</td>
-//             <td
-//               dir="ltr"
-//               className={
-//                 data.price_change_percentage_24h > 0
-//                   ? "text-green-600"
-//                   : "text-red-500"
-//               }
-//             >
-//               {data.price_change_percentage_24h.toFixed(2)}%
-//             </td>
-//             <td dir="ltr">{data.total_volume}</td>
-//             <td className="justify-center">
-//               <img
-//                 src={data.price_change_percentage_24h > 0 ? ChartUp : ChartDown}
-//                 alt={data.symbol}              />
-//             </td>
-//           </tr>
-//         ))}
-//       </tbody>
-//     </table>
-//   );
-// };
-
-// export default TableCoin;
 import ChartUp from "../../assets/chart-up.svg";
 import ChartDown from "../../assets/chart-down.svg";
 const toPersianDigits = (number) => {
-  return number
-    .toString()
-    .replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[digit]);
+  return number.toString().replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[digit]);
 };
 const TableCoin = ({ coin }) => {
   return (
@@ -103,9 +52,11 @@ const TableCoin = ({ coin }) => {
               </td>
               <td className="py-3 px-4 flex items-center justify-center">
                 <img
-                  src={data.price_change_percentage_24h > 0 ? ChartUp : ChartDown}
+                  src={
+                    data.price_change_percentage_24h > 0 ? ChartUp : ChartDown
+                  }
                   alt={data.symbol}
-                  className="w-10 h-6"
+                  className="w-14 h-6"
                 />
               </td>
             </tr>
