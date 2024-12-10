@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { RotatingTriangles } from "react-loader-spinner";
+import { ColorRing } from "react-loader-spinner";
 import { getCoinList, options } from "../../services/CryptoApi";
 import TableCoin from "../modules/TableCoin";
 import Pagination from "../modules/Pagination";
@@ -41,7 +41,7 @@ const HomePage = () => {
       </div>
       <div>
         {loading ? (
-          <RotatingTriangles
+          <ColorRing
             visible={true}
             height="80"
             width="80"

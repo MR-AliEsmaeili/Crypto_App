@@ -79,6 +79,7 @@
 // export default Search;
 import { useEffect, useState } from "react";
 import { getSearch, options } from "../../services/CryptoApi";
+import { ColorRing } from "react-loader-spinner";
 
 const Search = ({ currency, setCurrency }) => {
   const [searchQuery, setSearchQuery] = useState(""); // برای مقدار جستجو
@@ -130,7 +131,17 @@ const Search = ({ currency, setCurrency }) => {
           className="focus:outline-none px-2 py-1 bg-sky-950 border border-gray-300 rounded-lg"
           onChange={(e) => setSearchQuery(e.target.value)} // ذخیره مقدار جستجو
         />
-        {loading && <p className="text-white">در حال بارگذاری...</p>}
+        {loading && (
+          <ColorRing
+            visible={true}
+            height="40"
+            width="40"
+            color="#4fa94d"
+            ariaLabel="rotating-triangles-loading"
+            wrapperStyle={{ margin: "0vh auto" }}
+            wrapperClass=""
+          />
+        )}
         <ul className="dropdown absolute    bg-slate-800 bg-opacity-60 backdrop-blur-sm text-white mt-2 rounded-lg shadow-lg z-10">
           {Array.isArray(searchCoin) &&
             searchCoin.map((coin, index) => (
