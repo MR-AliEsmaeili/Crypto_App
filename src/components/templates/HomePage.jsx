@@ -29,7 +29,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="p-5 bg-sky-800 rounded-xl mb-5">
+      <div className="p-5 bg-slate-800 rounded-xl mb-5 border border-gray-400">
         <h1 className="text-3xl text-center"> اپلیکیشن ارز دیجیتال</h1>
       </div>
       <div>

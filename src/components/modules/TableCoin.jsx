@@ -6,9 +6,9 @@ const toPersianDigits = (number) => {
 const TableCoin = ({ coin }) => {
   return (
     <div className="overflow-x-auto rounded-xl shadow-lg my-10">
-      <table className="w-full bg-stone-800 rounded-xl text-center text-sm table-auto">
+      <table className="w-full bg-stone-700 rounded-xl text-center text-sm table-auto border border-gray-400">
         <thead>
-          <tr className="bg-slate-900 text-gray-200">
+          <tr className="bg-slate-800 text-gray-200">
             <th className="py-3 px-4">ارز دیجیتال</th>
             <th className="py-3 px-4">قیمت فعلی</th>
             <th className="py-3 px-4">تغییرات 📈</th>
@@ -25,13 +25,13 @@ const TableCoin = ({ coin }) => {
               } hover:bg-stone-600 text-gray-300 cursor-pointer`}
             >
               <td className="py-3 px-4">
-                <div className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                <div className="flex items-center justify-center gap-2  space-x-2 rtl:space-x-reverse">
                   <img
                     src={data.image}
                     alt={data.name}
-                    className="w-6 h-6 rounded-full"
+                    className="w-6 h-6 rounded-full "
                   />
-                  <p className="font-bold">{data.symbol.toUpperCase()}</p>
+                  <p className="font-bold ">{data.symbol.toUpperCase()}</p>
                 </div>
               </td>
               <td dir="ltr" className="py-3 px-4 font-bold">
