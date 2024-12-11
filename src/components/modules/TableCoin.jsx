@@ -58,7 +58,7 @@ const TableCoin = ({ coin , setShowChart }) => {
                     data.price_change_percentage_24h > 0 ? ChartUp : ChartDown
                   }
                   alt={data.symbol}
-                  className="w-14 h-6"
+                  className="w-16 h-6"
                 />
               </td>
             </tr>
