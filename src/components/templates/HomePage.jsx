@@ -33,11 +33,7 @@ const HomePage = () => {
         <h1 className="text-3xl text-center"> اپلیکیشن ارز دیجیتال</h1>
       </div>
       <div>
-        <Search
-          currency={currency}
-          setCurrency={setCurrency}
-          setLoading={setLoading}
-        />
+        <Search currency={currency} setCurrency={setCurrency} />
       </div>
       <div>
         {loading ? (
