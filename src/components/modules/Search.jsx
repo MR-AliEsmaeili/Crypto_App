@@ -9,9 +9,12 @@ const Search = ({ currency, setCurrency }) => {
   useEffect(() => {
     const controller = new AbortController(); // ایجاد AbortController
     const signal = controller.signal;
-setSearchCoin([])
+    setSearchCoin([]);
     const fetchSearchResults = async () => {
-      if (!searchQuery) return; // اگر کاربر چیزی وارد نکرده باشد، درخواست ارسال نشود
+      if (!searchQuery) {
+        setSearchCoin([]);
+        return;
+      } // اگر کاربر چیزی وارد نکرده باشد، درخواست ارسال نشود
       setLoading(true);
       try {
         const res = await fetch(getSearch(searchQuery), {
@@ -20,11 +23,10 @@ setSearchCoin([])
         });
         if (!res.ok) throw new Error("Failed to fetch data");
         const json = await res.json();
-        if(json.coins){
-
+        if (json.coins) {
           setSearchCoin(json.coins);
-        }else{
-          alert('در ارتباط با سرور مشکلی ایجاد شده است . مجدد تلاش کنید .')
+        } else {
+          alert("در ارتباط با سرور مشکلی ایجاد شده است . مجدد تلاش کنید .");
         }
       } catch (error) {
         if (error.name === "AbortError") {
@@ -65,7 +67,7 @@ setSearchCoin([])
             wrapperClass=""
           />
         )}
-         <ul className="dropdown absolute    bg-slate-800 bg-opacity-60 backdrop-blur-sm text-white mt-2 rounded-lg shadow-lg z-10">
+        <ul className=" h-64   overflow-y-scroll [&::-webkit-scrollbar]:w-0 dropdown absolute    bg-slate-800 bg-opacity-60 backdrop-blur-sm text-white mt-2 rounded-lg  z-10">
           {Array.isArray(searchCoin) &&
             searchCoin.map((coin) => (
               <li
