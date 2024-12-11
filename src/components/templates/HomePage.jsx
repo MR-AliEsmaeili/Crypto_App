@@ -5,12 +5,14 @@ import { getCoinList, options } from "../../services/CryptoApi";
 import TableCoin from "../modules/TableCoin";
 import Pagination from "../modules/Pagination";
 import Search from "../modules/Search";
+import Chart from "../modules/Chart";
 
 const HomePage = () => {
   const [coin, setCoin] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [currency, setCurrency] = useState("usd");
+  const [Showchart, setShowChart] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -47,10 +49,11 @@ const HomePage = () => {
             wrapperClass=""
           />
         ) : (
-          <TableCoin coin={coin} />
+          <TableCoin coin={coin} setShowChart={setShowChart}/>
         )}
         <Pagination page={page} setPage={setPage} />
       </div>
+      {!!Showchart &&<Chart setShowChart={setShowChart}/>}
     </>
   );
 };

@@ -3,7 +3,8 @@ import ChartDown from "../../assets/chart-down.svg";
 const toPersianDigits = (number) => {
   return number.toString().replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[digit]);
 };
-const TableCoin = ({ coin }) => {
+const TableCoin = ({ coin , setShowChart }) => {
+  const showHandler = () => setShowChart(true);
   return (
     <div className="overflow-x-auto rounded-xl shadow-lg my-10">
       <table className="w-full bg-stone-700 rounded-xl text-center text-sm table-auto border border-gray-400">
@@ -19,13 +20,14 @@ const TableCoin = ({ coin }) => {
         <tbody>
           {coin.map((data, index) => (
             <tr
+            onClick={showHandler}
               key={data.id}
               className={`${
                 index % 2 === 0 ? "bg-stone-700" : "bg-stone-800"
               } hover:bg-stone-600 text-gray-300 cursor-pointer`}
             >
-              <td className="py-3 px-4">
-                <div className="flex items-center justify-center gap-2  space-x-2 rtl:space-x-reverse">
+              <td className="py-3 px-4"  >
+                <div className="flex items-center justify-center gap-2  space-x-2 rtl:space-x-reverse" >
                   <img
                     src={data.image}
                     alt={data.name}
@@ -56,7 +58,7 @@ const TableCoin = ({ coin }) => {
                     data.price_change_percentage_24h > 0 ? ChartUp : ChartDown
                   }
                   alt={data.symbol}
-                  className="w-14 h-6"
+                  className="w-16 h-6"
                 />
               </td>
             </tr>
