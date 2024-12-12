@@ -10,7 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-
+import { toPersianDigits } from "../../helpers/toPersianDigits";
 const Chart = ({ Showchart, setShowChart }) => {
   const [type, setType] = useState("prices");
   console.log(Showchart);
@@ -53,30 +53,51 @@ const Chart = ({ Showchart, setShowChart }) => {
         <div className="flex justify-around">
           <button
             onClick={(e) => setType(e.target.name)}
-            className="px-5 py-2 border border-blue-700 text-gray-300 rounded-xl"
+            className={`${
+              type === "market_caps"
+                ? "px-5 py-2 border  bg-blue-700 border-blue-700 text-gray-300 rounded-xl"
+                : "px-5 py-2 border border-blue-700 text-gray-300 opacity-70 rounded-xl"
+            } hover:bg-blue-700 duration-500 rounded-xl `}
             name="market_caps"
           >
             ارزش بازار
           </button>
           <button
             onClick={(e) => setType(e.target.name)}
-            className="px-5 py-2 border border-blue-700 text-gray-300 rounded-xl"
+            className={`${
+              type === "prices"
+                ? "px-5 py-2 border bg-blue-700 border-blue-700 text-gray-300 rounded-xl"
+                : "px-5 py-2 border border-blue-700 text-gray-300 opacity-70 rounded-xl"
+            } hover:bg-blue-700 duration-500 rounded-xl `}
             name="prices"
           >
             قیمت
           </button>
           <button
             onClick={(e) => setType(e.target.name)}
-            className="px-5 py-2 border border-blue-700 text-gray-300 rounded-xl"
+            className={`${
+              type === "total_volumes"
+                ? "px-5 py-2 border bg-blue-700 border-blue-700 text-gray-300 rounded-xl"
+                : "px-5 py-2 border border-blue-700 text-gray-300 opacity-70 rounded-xl"
+            } hover:bg-blue-700 duration-500 rounded-xl  `}
             name="total_volumes"
           >
             حجم بازار
           </button>
         </div>
         <div className="flex justify-around mt-12">
-          <p>قیمت فعلی :${Showchart.data.current_price}</p>
-          <p>ارزش بازار :${Showchart.data.market_cap}</p>
-          <p>کمترین قیمت در 24 ساعت اخیر :${Showchart.data.low_24h}</p>
+          <p>
+            قیمت فعلی :$
+            {toPersianDigits(Showchart.data.current_price.toLocaleString())}
+          </p>
+          <p>
+            ارزش بازار :$
+            {toPersianDigits(Showchart.data.market_cap.toLocaleString())}
+          </p>
+          <p>
+            کمترین قیمت در 24 ساعت اخیر :$
+            {toPersianDigits(Showchart.data.low_24h.toLocaleString())}
+          </p>
         </div>
       </div>
     </div>

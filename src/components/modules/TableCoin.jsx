@@ -1,9 +1,8 @@
 import ChartUp from "../../assets/chart-up.svg";
 import ChartDown from "../../assets/chart-down.svg";
 import { getChart, options } from "../../services/CryptoApi";
-const toPersianDigits = (number) => {
-  return number.toString().replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[digit]);
-};
+import { toPersianDigits } from "../../helpers/toPersianDigits";
+
 const TableCoin = ({ coin, setShowChart }) => {
   return (
     <div className="overflow-x-auto rounded-xl shadow-lg my-10">
