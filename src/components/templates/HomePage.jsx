@@ -12,7 +12,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [currency, setCurrency] = useState("usd");
-  const [Showchart, setShowChart] = useState(false);
+  const [Showchart, setShowChart] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -35,7 +35,11 @@ const HomePage = () => {
         <h1 className="text-3xl text-center"> اپلیکیشن ارز دیجیتال</h1>
       </div>
       <div>
-        <Search currency={currency} setCurrency={setCurrency} />
+        <Search
+          currency={currency}
+          setCurrency={setCurrency}
+          setShowChart={setShowChart}
+        />
       </div>
       <div>
         {loading ? (
@@ -49,11 +53,13 @@ const HomePage = () => {
             wrapperClass=""
           />
         ) : (
-          <TableCoin coin={coin} setShowChart={setShowChart}/>
+          <TableCoin coin={coin} setShowChart={setShowChart} />
         )}
         <Pagination page={page} setPage={setPage} />
       </div>
-      {!!Showchart &&<Chart setShowChart={setShowChart}/>}
+      {!!Showchart && (
+        <Chart Showchart={Showchart} setShowChart={setShowChart} />
+      )}
     </>
   );
 };

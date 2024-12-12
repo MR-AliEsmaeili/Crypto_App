@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getSearch, options } from "../../services/CryptoApi";
+import { getChart, getSearch, options } from "../../services/CryptoApi";
 import { ColorRing } from "react-loader-spinner";
-const Search = ({ currency, setCurrency }) => {
+const Search = ({ currency, setCurrency, setShowChart }) => {
   const [searchQuery, setSearchQuery] = useState(""); // برای مقدار جستجو
   const [searchCoin, setSearchCoin] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -46,6 +46,7 @@ const Search = ({ currency, setCurrency }) => {
       controller.abort();
     };
   }, [searchQuery]); // اجرای اثر تنها در زمان تغییر query
+
   return (
     <div className="flex justify-around place-items-start">
       <div>
@@ -70,13 +71,12 @@ const Search = ({ currency, setCurrency }) => {
         <ul className=" h-64   overflow-y-scroll [&::-webkit-scrollbar]:w-0 dropdown absolute    bg-slate-800 bg-opacity-60 backdrop-blur-sm text-white mt-2 rounded-lg  z-10">
           {Array.isArray(searchCoin) &&
             searchCoin.map((coin) => (
-              <li
+              <SearchItems
+                setSearchQuery={setSearchQuery}
+                data={coin}
+                setShowChart={setShowChart}
                 key={coin.id}
-                className="flex justify-start place-items-center  hover:bg-slate-700  cursor-pointer p-2"
-              >
-                <img src={coin.thumb} />
-                <p className="mx-2">{coin.api_symbol}</p>
-              </li>
+              />
             ))}
         </ul>
       </div>
@@ -99,3 +99,31 @@ const Search = ({ currency, setCurrency }) => {
 };
 
 export default Search;
+
+const SearchItems = ({ data }) => {
+  const { id, thumb, api_symbol } = data;
+  // const showHandler = async () => {
+  //   try {
+  //     const res = await fetch(getChart(id), options);
+  //     const json = await res.json();
+  //     setShowChart({ ...json, data });
+  //     setSearchQuery("");
+  //   } catch (error) {
+  //     console.log(error);
+  //     setShowChart(null);
+  //   }
+
+  //   //  setShowChart(true);
+  // };
+  return (
+    <li
+      // onClick={showHandler}
+      className="flex justify-start place-items-center  hover:bg-slate-700  cursor-pointer p-2"
+    >
+      <img src={thumb} />
+      <p className="mx-2">{api_symbol}</p>
+    </li>
+  );
+};
+
+export { SearchItems };

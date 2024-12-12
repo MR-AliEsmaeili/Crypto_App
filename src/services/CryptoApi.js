@@ -15,7 +15,7 @@ const getCoinList = (page, currency) => {
 
 const getSearch = (query) => `${BASE_URL}/search?query=${query}`;
 
-const getChart = (id,currency)=> `${BASE_URL}/coins/${id}/market_chart?vs_currency=${currency}&days=7`
+const getChart = (id)=> `${BASE_URL}/coins/${id}/market_chart?vs_currency=usd&days=7`
 
 
 export { options, getCoinList, getSearch,getChart };
