@@ -44,7 +44,7 @@ const Chart = ({ Showchart, setShowChart }) => {
               />
               <CartesianGrid stroke="#404042" />
               <XAxis dataKey="date" hide />
-              <YAxis dataKey={type} domain={["auto", "auto"]} />
+              <YAxis dataKey={type} width={120} domain={["auto", "auto"]} />
               <Legend />
               <Tooltip />
             </LineChart>

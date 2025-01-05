@@ -59,7 +59,7 @@ const Tablerow = ({ data, index, setShowChart }) => {
     <tr
       onClick={showHandler}
       className={`${
-        index % 2 === 0 ? "bg-stone-700" : "bg-stone-800"
+        index % 2 === 0 ? "bg-slate-700" : "bg-slate-800"
       } hover:bg-stone-600 text-gray-300 cursor-pointer`}
     >
       <td className="py-3 px-4">
