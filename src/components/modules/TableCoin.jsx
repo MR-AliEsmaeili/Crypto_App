@@ -60,7 +60,7 @@ const Tablerow = ({ data, index, setShowChart }) => {
       onClick={showHandler}
       className={`${
         index % 2 === 0 ? "bg-slate-700" : "bg-slate-800"
-      } hover:bg-stone-600 text-gray-300 cursor-pointer`}
+      } hover:bg-stone-800 duration-300 text-gray-300 cursor-pointer`}
     >
       <td className="py-3 px-4">
         <div className="flex items-center justify-center gap-2  space-x-2 rtl:space-x-reverse">
